@@ -6,7 +6,7 @@ const PORT = process.env.PORT || 3000;
 app.get("/delta/bypass", async (req, res) => {
   const { link } = req.query;
   if (!link) {
-    return res.status(400).json({ warning: "Url Needed, Samrat API" });
+    return res.status(400).json({ warning: "Url Needed, SAMRAT and KAZUMA API" });
   }
   const StartTime = Date.now();
   try {
@@ -14,7 +14,7 @@ app.get("/delta/bypass", async (req, res) => {
     if (link.startsWith("https://gateway.platoboost.com/a/8?id=")) {
       try {
         const DeltaAuthResponse = await axios.get(
-          `http://fi1.bot-hosting.net:6780/api/bypass?link=${encodeURIComponent(link)}`
+          `https://samrat-delta-bypass.vercel.app/delta/bypass?link=${encodeURIComponent(link)}`
         );
         if (DeltaAuthResponse.data.key) {
           result = DeltaAuthResponse.data.key;
@@ -27,13 +27,13 @@ app.get("/delta/bypass", async (req, res) => {
       } catch (error) {
         console.error("Failed to bypass url", error.message);
         return res.status(500).json({
-          error: "Error fetching delta url",
+          error: "Error fetching url",
         });
       }
     } else {
       return res.status(400).json({
-        Note: "Url not supported to bypass Only Delta https://gateway.platoboost.com/a/8?id= like this",
-        Message: "SAMRAT API",
+        Note: "Url not supported to bypass Only Delta",
+        Message: "SAMRAT and KAZUMA API",
       });
     }
 
@@ -42,7 +42,7 @@ app.get("/delta/bypass", async (req, res) => {
     res.json({
       key: result,
       duration: `${duration}s`,
-      credit: "Made by Samrat API",
+      credit: "Made by SAMRAT and KAZUMA API",
     });
   } catch (error) {
     console.error("Error:", error.message);
@@ -52,7 +52,7 @@ app.get("/delta/bypass", async (req, res) => {
       Error: "Failed to bypass",
       Details: error.message,
       Duration: `${duration}s`,
-      Message: "Made by Samrat API",
+      Message: "Made by SAMRAT and KAZUMA API",
     });
   }
 });
