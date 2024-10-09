@@ -6,7 +6,7 @@ const PORT = process.env.PORT || 3000;
 app.get("/delta/bypass", async (req, res) => {
   const { link } = req.query;
   if (!link) {
-    return res.status(400).json({ warning: "Url Needed, SAMRAT and KAZUMA API" });
+    return res.status(400).json({ "Url Needed" });
   }
   const StartTime = Date.now();
   try {
