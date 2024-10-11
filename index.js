@@ -14,7 +14,7 @@ app.get("/delta/bypass", async (req, res) => {
     if (link.startsWith("https://gateway.platoboost.com/a/8?id=")) {
       try {
         const DeltaAuthResponse = await axios.get(
-          `https://samrat-delta-bypass.vercel.app/delta/bypass?link=${encodeURIComponent(link)}`
+          `https://keybypass.vercel.app/api/delta?url=${encodeURIComponent(link)}`
         );
         if (DeltaAuthResponse.data.key) {
           result = DeltaAuthResponse.data.key;
